@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cheese Scape</title>
+  <link rel="stylesheet" href="./style.css">
+  
+</head>
+<body>
+
+
+  <div id="startScreen">
+      
+    <!-- <h1 id="welcome">Welcome to the Cheese Scape</h1> -->
+   <ul id="btnContainer">
+      <li><button id="startBtn">* Press Start  *</button></li>
+      <li id="left"><button id="aboutBtn" onclick="openAbout()" >About</button></li>
+      <li id="left"><button id="playPauseBTN" onclick="playPause()">Audio ►</button></li>
+        <audio id="audio">
+            <source src="Run As Fast As You Can.mp3" type="audio/mpeg">
+        </audio>  
+      </ul> 
+  </div>
+
+
+  
+  <div id="aboutPopup" class="popup">
+    <div class="popup-content">
+        <span class="close" onclick="closeAbout()">×</span>
+        <h2>About Cheese Scape</h2>
+        <p>This is a game a 4 level maze game wherein you guide a rat to the maze to find the cheese.</p>
+        <h3> Instruction</h3>
+        <p> Use arrow keys to move the rat.</p>
+        <p> Finish the Game up to 4 levels.</p>
+        
+    </div>
+</div>
+
+  <div id="page">
+
+    <div id="Message-Container">
+      <div id="message">
+        <h1>Congratulations!</h1>
+        <p>You are done.</p>
+        <p id="moves"></p>
+        <input id="okBtn" type="button" onclick="toggleVisablity('Message-Container')" value="Done" />
+      </div>
+    </div>
+
+    <br>
+  <div id="page1"style="display: none;">
+    <div id="menu">
+      <div class="custom-select">
+        <select id="diffSelect">
+                  <option value="10"id="level">1</option>
+                  <option value="15"id="level">2</option>
+                  <option value="25"id="level">3</option>
+                  <option value="38"id="level">4</option>                                      
+      </select>
+      </div>
+      <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
+      <input id="backbtn" type="button" onclick="goToStartScreen()" value="Back"/>
+    </div>
+    
+
+    <div id="view">
+      <div id="mazeContainer">
+        <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+      </div>
+    
+    </div>
+
+
+  </div>
+</div>
+
+<div>
+	
+</div>
+
+
+
+<script>
+
+  var audio = document.getElementById('audio');
+  var playPauseBTN = document.getElementById('playPauseBTN');
+  var count = 0;
+
+    function playPause(){
+      if(count == 0){
+        count = 1;
+        audio.play();
+        playPauseBTN.innerHTML = "";
+        playPauseBTN.textContent = "Audio ►"
+      }else{
+        count = 0;
+        audio.pause();
+        playPauseBTN.innerHTML = "";
+        playPauseBTN.textContent = "Audio ❚❚ "
+      }
+
+}
+audio.loop = true;
+
+</script>
+
+<script>
+  function goToStartScreen() {
+      document.getElementById('startScreen').style.display = 'block';
+      document.getElementById('page1').style.display = 'none';
+  }
+</script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+  
+  <script src="./script.js"></script>
+
+
+
+</body>
+</html>
